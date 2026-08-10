@@ -27,7 +27,8 @@ public class ProductRepositoryImpl implements ProductRepository {
                         response -> Mono.error(new ProductNotFoundException("Product not found with id: " + productId)))
                 .onStatus(HttpStatusCode::isError,
                         response -> Mono.error(new RuntimeException("External error with status: " + response.statusCode())))
-                .bodyToFlux(String.class);
+                .bodyToMono(String[].class)
+                .flatMapMany(Flux::fromArray);
     }
 
     @Override
