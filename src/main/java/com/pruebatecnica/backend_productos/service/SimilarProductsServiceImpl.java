@@ -7,6 +7,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
+/**
+ * Implementación del servicio para productos similares.
+ */
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -19,6 +22,6 @@ public class SimilarProductsServiceImpl implements SimilarProductsService {
         log.info("Consultando productos similares para productId: {}", productId);
 
         return productRepository.getSimilarProductIds(productId)
-                .flatMap(productRepository::getProductDetail);
+                .flatMap(productRepository::getProductDetail); // Llamadas en paralelo para cada ID
     }
 }

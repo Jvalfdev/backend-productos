@@ -11,6 +11,9 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+/**
+ * Implementación del repositorio de productos
+ */
 @Slf4j
 @Repository
 @RequiredArgsConstructor
